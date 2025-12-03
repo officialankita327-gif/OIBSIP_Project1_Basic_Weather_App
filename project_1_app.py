@@ -1,7 +1,7 @@
 import requests
 
 # ---------- CONFIG ----------
-API_KEY = "41bb05477f1a835c0e6a390e4088d2d3"  # <-- yahan apna OpenWeatherMap API key daalo
+API_KEY = "41bb05477f1a835c0e6a390e4088d2d3" 
 BASE_URL = "https://api.openweathermap.org/data/2.5/weather"
 
 
@@ -13,15 +13,15 @@ def get_weather(city_name: str):
     params = {
         "q": city_name,
         "appid": API_KEY,
-        "units": "metric"  # Celsius me data chahiye
+        "units": "metric"  
     }
 
     try:
         response = requests.get(BASE_URL, params=params, timeout=10)
-        response.raise_for_status()  # HTTP error aaya to exception
+        response.raise_for_status()  
         data = response.json()
 
-        # Agar city galat ho to OpenWeatherMap cod != 200 deta hai
+      
         if data.get("cod") != 200:
             print("❌ City not found. Please check the name.")
             return None
@@ -79,3 +79,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
